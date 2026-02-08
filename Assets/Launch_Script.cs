@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class PingPongLauncher : MonoBehaviour
@@ -10,23 +9,20 @@ public class PingPongLauncher : MonoBehaviour
 
     [Header("Auto Aim & Fire")]
     public Transform player;
-    public float fireRate = 2f;
+    public float fireRate = 5f;
 
     private float timer;
 
     [Header("UI")]
-    public BallSpeedUI speedUI;
-    public TextMeshProUGUI distanceText;
+    public MetricsBoardUI metricsBoard;
 
     void Update()
     {
-        // Aim at the player
         if (player != null)
         {
             LaunchPoint.forward = (player.position - LaunchPoint.position).normalized;
         }
 
-        // Fire on a timer
         timer += Time.deltaTime;
         if (timer >= fireRate)
         {
@@ -34,30 +30,24 @@ public class PingPongLauncher : MonoBehaviour
             timer = 0f;
         }
     }
-
     public void Shoot()
     {
         GameObject ball = Instantiate(Ping_Pong_Ball, LaunchPoint.position, LaunchPoint.rotation);
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
-        // Add random spread
         Vector3 spread = LaunchPoint.forward
             + new Vector3(
                 Random.Range(-0.05f, 0.05f),
                 Random.Range(-0.05f, 0.05f),
                 0f);
 
-        // Correct velocity assignment
         rb.linearVelocity = spread.normalized * launchForce;
+        rb.AddTorque(Random.insideUnitSphere * 0.1f, ForceMode.Impulse);
 
-        // Assign distance UI
-        BallDistanceTracker tracker = ball.GetComponent<BallDistanceTracker>();
-        tracker.distanceText = distanceText;
+        // Assign providers to the board
+        metricsBoard.speedProvider = ball.GetComponent<BallSpeedProvider>();
+        metricsBoard.distanceProvider = ball.GetComponent<BallDistanceProvider>();
 
-        // Assign speed UI
-        speedUI.SetBall(rb);
-
-        // Destroy after 5 seconds
         Destroy(ball, 5f);
     }
 }
