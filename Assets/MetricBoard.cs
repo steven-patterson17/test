@@ -8,6 +8,8 @@ public class MetricsBoardUI : MonoBehaviour
 
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI distanceText;
+    public TextMeshProUGUI difficultyText;
+
 
     void Update()
     {
@@ -16,6 +18,10 @@ public class MetricsBoardUI : MonoBehaviour
 
         if (distanceProvider != null)
             distanceText.text = "Distance: " + distanceProvider.Distance.ToString("F2") + " m";
+    }
+    public void SetDifficulty(Difficulty difficulty)
+    {
+        difficultyText.text = "Difficulty: " + difficulty.ToString();
     }
 
 }

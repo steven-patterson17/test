@@ -24,7 +24,7 @@ public class PingPongLauncher : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        if (timer >= fireRate)
+        if (timer >= currentFireRate)
         {
             Shoot();
             timer = 0f;
@@ -36,12 +36,15 @@ public class PingPongLauncher : MonoBehaviour
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
         Vector3 spread = LaunchPoint.forward
-            + new Vector3(
-                Random.Range(-0.05f, 0.05f),
-                Random.Range(-0.05f, 0.05f),
-                0f);
+    + new Vector3(
+        Random.Range(-currentSpread, currentSpread),
+        Random.Range(-currentSpread, currentSpread),
+        0f);
 
-        rb.linearVelocity = spread.normalized * launchForce;
+        rb.linearVelocity = spread.normalized * currentLaunchForce;
+
+
+
         rb.AddTorque(Random.insideUnitSphere * 0.1f, ForceMode.Impulse);
 
         // Assign providers to the board
@@ -50,4 +53,42 @@ public class PingPongLauncher : MonoBehaviour
 
         Destroy(ball, 5f);
     }
+
+    public Difficulty difficulty = Difficulty.Beginner;
+
+    private float currentLaunchForce;
+    private float currentSpread;
+    private float currentFireRate;
+
+
+    private void ApplyDifficulty()
+    {
+        switch (difficulty)
+        {
+            case Difficulty.Beginner:
+                currentLaunchForce = 8f;
+                currentSpread = 0.02f;
+                currentFireRate = 3f;
+                break;
+
+            case Difficulty.Intermediate:
+                currentLaunchForce = 12f;
+                currentSpread = 0.05f;
+                currentFireRate = 2f;
+                break;
+
+            case Difficulty.Advanced:
+                currentLaunchForce = 16f;
+                currentSpread = 0.12f;
+                currentFireRate = 1f;
+                break;
+        }
+    }
+
+    void Start()
+    {
+        ApplyDifficulty();
+    }
+
+
 }
