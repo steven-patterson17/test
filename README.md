@@ -14,3 +14,6 @@ This application is designed for training purposes using the Meta Quest 2 virtua
 2. Clone the repository:
    ```bash
    git clone https://github.com/steven-patterson17/test.git
+
+## Unity Version
+m_EditorVersion: 6000.0.66f2
