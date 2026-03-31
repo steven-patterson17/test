@@ -1,11 +1,16 @@
---Overview
+# Meta Quest 2 VR Ping-Pong Training Application
 
-This VR application handles improving and tracking your skill in a sport (ping-pong). 
-The system will provide an immersive VR environment to practice techniques and timing through training scenarios. It will be able to measure speed, accuracy, and 
-consistency. This project can be expanded in the future to include more sports but will be utilized for athletes/doctors to gauge how effective VR can be at training. 
-The system will be contained within Unity and MetaQuest headsets. For now, the system is a capstone project for Penn State Harrisburg Students. Client & advisor 
-is Dr. Reza
+## Overview
+This application is designed for training purposes using the Meta Quest 2 virtual reality headset. It provides an immersive ping-pong training experience, allowing users to improve their reflexes and skills in a virtual environment using Unity.
 
---System Reqs
-Meta Quest VR Headset
+## Features
+- **Immersive Training Environment**: Engage in a realistic virtual ping-pong setting.
+- **Customizable Training Sessions**: Adjust difficulty levels to match your skill.
+- **Analytics and Feedback**: Receive performance metrics after each session.
+- **Multiplayer Mode**: Challenge friends or practice against AI opponents.
 
+## Installation
+1. Ensure you have Unity installed on your system.
+2. Clone the repository:
+   ```bash
+   git clone https://github.com/steven-patterson17/test.git
