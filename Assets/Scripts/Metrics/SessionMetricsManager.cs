@@ -154,7 +154,7 @@ public class SessionMetricsManager : MonoBehaviour
 
     private string GetPlayerId()
     {
-        return AuthenticationManager.user?.UserId ?? "unknown";
+        return AuthenticationManager.User?.UserId ?? "unknown";
     }
 
     private IEnumerator WaitForFirebaseAndUpload(GameMetrics metrics, float timeoutSeconds)
