@@ -37,7 +37,7 @@ public class BallLifecycleTracker : MonoBehaviour
     /// <param name="spin">The spin applied to the ball.</param>
     /// <param name="angle">The return angle of the ball.</param>
     /// <param name="distance">The distance traveled after the return.</param>
-    private void OnBallReturn(float speed, float spin, float angle, float distance)
+    private void OnBallReturn(string swingType, float speed, float spin, float angle, float distance)
     {
         // This event only fires for THIS ball if the provider is on the ball
         hitPaddle = true;

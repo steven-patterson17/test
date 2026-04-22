@@ -85,7 +85,7 @@ public class SessionMetricsManager : MonoBehaviour
     /// <summary>
     /// Tracks correct swing types only.
     /// </summary>
-    private void RegisterSwingType(string swingType)
+    public void RegisterSwingType(string swingType)
     {
         switch (swingType)
         {

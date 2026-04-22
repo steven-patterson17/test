@@ -9,12 +9,12 @@ public class HandednessUI : MonoBehaviour
 {
     public void SetRightHanded()
     {
-        SessionMetricsManager.IsLeftHanded = false;
+        SessionMetricsManager.SetLeftHanded(false);
     }
 
     public void SetLeftHanded()
     {
-        SessionMetricsManager.IsLeftHanded = true;
+        SessionMetricsManager.SetLeftHanded(true);
 
     }
 

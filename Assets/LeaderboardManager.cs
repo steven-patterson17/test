@@ -27,9 +27,6 @@ public class LeaderboardManager : MonoBehaviour
         {
             leaderboardPanel.SetActive(true);
         }
-        else
-        {
-        }
 
         // Ensure this object is active
         gameObject.SetActive(true);
