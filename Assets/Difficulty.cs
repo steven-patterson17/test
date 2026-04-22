@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public enum Difficulty
+namespace VRTraining
 {
-    Beginner,
-    Intermediate,
-    Advanced,
-    Random
+    public enum Difficulty
+    {
+        Beginner,
+        Intermediate,
+        Advanced,
+        Random
+    }
 }
