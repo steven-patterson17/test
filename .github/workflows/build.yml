@@ -8,8 +8,8 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build:
-    name: Analyze Unity Scripts
+  sonar:
+    name: Analyze Unity Scripts with SonarCloud
     runs-on: windows-latest
 
     steps:
@@ -39,10 +39,7 @@ jobs:
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.sources="Assets" `
-            /d:sonar.exclusions="**/Library/**,**/Temp/**,**/Logs/**,**/Packages/**,**/*.csproj,**/*.Editor.cs"
-
-      - name: Build (minimal - avoid Unity dependencies)
-        run: dotnet build Assembly-CSharp.csproj --no-dependencies
+            /d:sonar.exclusions="**/Library/**,**/Temp/**,**/Logs/**,**/Packages/**,**/*.csproj,**/*.dll,**/*.Editor.cs"
 
       - name: SonarCloud End
         shell: powershell
