@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public class Ball_Speed_Tracker : MonoBehaviour
+namespace VRTraining
 {
-    private Rigidbody rb;
-
-    public float Speed { get; private set; }
-
-    void Awake()
+    public class Ball_Speed_Tracker : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-
-        if (rb == null)
+        private Rigidbody rb;
+    
+        public float Speed { get; private set; }
+    
+        void Awake()
         {
-            Debug.LogError($"{gameObject.name} has no Rigidbody!");
+            rb = GetComponent<Rigidbody>();
+    
+            if (rb == null)
+            {
+                Debug.LogError($"{gameObject.name} has no Rigidbody!");
+            }
         }
-    }
-
-    void Update()
-    {
-        if (rb != null)
+    
+        void Update()
         {
-            Speed = rb.linearVelocity.magnitude;
+            if (rb != null)
+            {
+                Speed = rb.linearVelocity.magnitude;
+            }
         }
     }
 }
