@@ -2,18 +2,26 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   sonar:
+    name: Analyze Unity Scripts
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 7.0.x
 
       - name: Install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
@@ -22,7 +30,7 @@ jobs:
         shell: powershell
         run: echo "$env:USERPROFILE\.dotnet\tools" >> $env:GITHUB_PATH
 
-      - name: Sonar Begin
+      - name: SonarCloud Begin
         shell: powershell
         run: |
           dotnet-sonarscanner begin `
@@ -30,9 +38,10 @@ jobs:
             /o:"steven-patterson17" `
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
-            /d:sonar.sources="Assets"
+            /d:sonar.sources="Assets" `
+            /d:sonar.cs.skipCompilerCheck=true
 
-      - name: Sonar End
+      - name: SonarCloud End
         shell: powershell
         run: |
           dotnet-sonarscanner end `
