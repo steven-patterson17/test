@@ -1,0 +1,20 @@
+[
+  {
+    "MountId": "56e62dd7-241f-41e9-8c6b-dd4ca4513e62",
+    "AncestorCsetIds": [
+      46
+    ],
+    "SourceCsetId": 47,
+    "DestinationCsetId": 46,
+    "FileConflicts": [
+      {
+        "Path": "/Assets/Plugins/Android/AndroidManifest.xml",
+        "ItemId": 3043,
+        "ParentItemId": 2189,
+        "BaseRevId": 13473,
+        "SourceRevId": 13658,
+        "DestinationRevId": 13473
+      }
+    ]
+  }
+]
