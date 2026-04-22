@@ -5,17 +5,20 @@ using UnityEngine;
 /// Keeps track of which hand the user
 /// is training
 /// </summary>
-public class HandednessUI : MonoBehaviour
+namespace VRTraining
 {
-    public void SetRightHanded()
+    public class HandednessUI : MonoBehaviour
     {
-        SessionMetricsManager.SetLeftHanded(false);
+        public void SetRightHanded()
+        {
+            SessionMetricsManager.SetLeftHanded(false);
+        }
+    
+        public void SetLeftHanded()
+        {
+            SessionMetricsManager.SetLeftHanded(true);
+    
+        }
+    
     }
-
-    public void SetLeftHanded()
-    {
-        SessionMetricsManager.SetLeftHanded(true);
-
-    }
-
 }
