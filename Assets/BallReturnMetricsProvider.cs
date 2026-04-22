@@ -1,4 +1,4 @@
-using Oculus.Interaction;
+// using Oculus.Interaction;
 using System;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ public class BallReturnMetricsProvider : MonoBehaviour
     /// Event triggered when the ball is returned by a paddle.
     /// Provides return speed, spin, angle, and distance traveled.
     /// </summary>
-    public static event Action<float, float, float, float> OnBallReturn;
+    public static event Action<string, float, float, float, float> OnBallReturn;
 
     /// <summary>
     /// Reference to the Rigidbody component used for physics calculations.
@@ -93,7 +93,7 @@ public class BallReturnMetricsProvider : MonoBehaviour
             float distance = distanceProv != null ? distanceProv.Distance : 0f;
 
             // Raise event for other systems
-            OnBallReturn?.Invoke(ReturnSpeed, ReturnSpin, ReturnAngle, distance);
+            OnBallReturn?.Invoke(swingType, ReturnSpeed, ReturnSpin, ReturnAngle, distance);
         }
     }
 
